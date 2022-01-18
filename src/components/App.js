@@ -3,6 +3,8 @@ import './App.css';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
+import LoginPage from './LoginPage.js'
+import QuestionsPage from './QuestionsPage.js'
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,15 +16,18 @@ class App extends React.Component {
         <LoadingBar />
         {this.props.loading === true 
           ? ''
-          : 'Hello!' }
+          : <div>
+              <LoginPage />
+              <QuestionsPage />
+            </div> }
       </div>
     );
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ questions }) {
   return {
-    loading: authedUser === null
+    loading: Object.keys(questions).length === 0
   }
 }
 
