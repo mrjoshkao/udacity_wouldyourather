@@ -3,8 +3,10 @@ import './App.css';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './LoginPage.js'
 import QuestionsPage from './QuestionsPage.js'
+import QuestionPage from './QuestionPage.js'
 
 class App extends React.Component {
   componentDidMount() {
@@ -12,15 +14,17 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div className="App">
+      <Router className="App">
         <LoadingBar />
         {this.props.loading === true 
           ? ''
           : <div>
-              <LoginPage />
-              <QuestionsPage />
+              <Routes>
+                <Route path='/' element={<div><LoginPage /> <QuestionsPage /></div>} />
+                <Route path='/question/:id' element={<QuestionPage/>} />
+              </Routes>
             </div> }
-      </div>
+      </Router>
     );
   }
 }

@@ -7,12 +7,10 @@ class QuestionsPage extends React.Component {
     
     const answeredQuestionsKeys = Object.keys(this.props.answers)
     const answeredQuestions = answeredQuestionsKeys.map( (key) =>  this.props.questions[key] ) 
-    const answeredQuestionsChoices = Object.values(this.props.answers)
     
     /*https://www.codegrepper.com/code-examples/javascript/remove+common+elements+from+two+arrays+javascript*/
     const unansweredQuestions = Object.keys(this.props.questions).filter(val => !answeredQuestionsKeys.includes(val)).map( (key) => this.props.questions[key] ) 
-    
-    console.log(unansweredQuestions)
+
     
     return (
       <div>

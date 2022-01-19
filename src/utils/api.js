@@ -14,7 +14,6 @@ export function getInitialData () {
     _getUsers(),
     _getQuestions(),
   ]).then(([users, questions]) => {
-      //console.log(users); console.log(questions);
       return ({
         users,
         questions,
