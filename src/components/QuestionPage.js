@@ -12,18 +12,22 @@ import AnswerSelector from './AnswerSelector.js'
 function QuestionPage(props) {
   const { id } = useParams()
   const q = useSelector((state) => state.questions)[id]
-  const author = useSelector((state) => state.users)[q.author]
+  const users = useSelector((state) => state.users)
+  const author = users[q.author]
   const authedUser = useSelector((state) => state.authedUser)
+  const authedUserAnswers = authedUser ? users[authedUser].answers : []
   const votesOne = q.optionOne.votes.length
   const votesTwo = q.optionTwo.votes.length
   const totalVotes = votesOne + votesTwo
+  debugger;
   return (
     <div>
       {author.name} asks: <br/> {q.optionOne.text} OR {q.optionTwo.text}
       {
-        (q.optionOne.votes.includes(authedUser) && <div><h1> You selected: </h1> {q.optionOne.text} <h1>Votes</h1> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div>) ||
-        (q.optionTwo.votes.includes(authedUser) && <div><h1> You selected: </h1> {q.optionTwo.text} <h1>Votes</h1> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div>) ||
-        <div><h1>Vote: </h1><AnswerSelector /></div>
+        authedUserAnswers[q.id] ?
+          <div><h1> You selected: </h1> {q[authedUserAnswers[q.id]].text} <h1>Votes</h1> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div> 
+          :
+          <div><h1>Vote: </h1><AnswerSelector /></div>
       }
     </div>
   )

@@ -5,7 +5,7 @@ let users = {
     avatarURL: '../../images/snow.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo',  // fixed an error in original file!
       "am8ehyc8byjqgar0jgpub9": 'optionTwo',
       "loxhs1bqm25b708cmbf3g": 'optionTwo'
     },
@@ -28,7 +28,7 @@ let users = {
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne'
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo' // fixed an error in original file!
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   }

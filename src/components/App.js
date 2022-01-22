@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './LoginPage.js'
-import QuestionsPage from './QuestionsPage.js'
+import Dashboard from './Dashboard.js'
 import QuestionPage from './QuestionPage.js'
 
 class App extends React.Component {
@@ -20,7 +20,7 @@ class App extends React.Component {
           ? ''
           : <div>
               <Routes>
-                <Route path='/' element={<div><LoginPage /> <QuestionsPage /></div>} />
+                <Route path='/' element={<div><LoginPage /> <Dashboard /></div>} />
                 <Route path='/question/:id' element={<QuestionPage/>} />
               </Routes>
             </div> }

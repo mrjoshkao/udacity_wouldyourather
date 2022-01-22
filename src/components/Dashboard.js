@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import QuestionBlurbs from './QuestionBlurbs.js'
 
-class QuestionsPage extends React.Component {
+class Dashboard extends React.Component {
   render() {
     
     const answeredQuestionsKeys = Object.keys(this.props.answers)
@@ -31,4 +31,4 @@ function mapStateToProps ( { authedUser, users, questions } ) {
   }
 }
 
-export default connect(mapStateToProps)(QuestionsPage);
+export default connect(mapStateToProps)(Dashboard);
