@@ -20,11 +20,16 @@ export function getInitialData () {
     })
   })
 }
-
+/*
+ * info = { optionOneText:[STRING], optionTwoText:[STRING], author:[STRING] }
+ */
 export function saveQuestion (info) {
   return _saveQuestion(info)
 }
 
+/*
+ * info = { authedUser, qid, answer }
+ */
 export function saveQuestionAnswer (info) {
   return _saveQuestionAnswer(info)
 }

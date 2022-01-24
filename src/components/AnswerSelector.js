@@ -2,31 +2,39 @@
  * this pattern comes from https://www.robinwieruch.de/react-radio-button/
  */
 
-import React, { Component } from "react";
+import React from "react";
+
+function onSubmit(e,favorite,submitAnswer) {
+  e.preventDefault();
+  submitAnswer(favorite);
+}
 
 function AnswerSelector(props) {
-  const [favorite, setFavorite] = React.useState('cat');
+  const [favorite, setFavorite] = React.useState('optionOne');
 
-  const handleCatChange = () => {
-    setFavorite('cat');
+  const handleChangeOne = () => {
+    setFavorite('optionOne');
   };
 
-  const handleDogChange = () => {
-    setFavorite('dog');
+  const handleChangeTwo = () => {
+    setFavorite('optionTwo');
   };
 
   return (
     <div>
       <RadioButton
-        label="Cat"
-        value={favorite === 'cat'}
-        onChange={handleCatChange}
+        label={props.optionOne}
+        value={favorite === 'optionOne'}
+        onChange={handleChangeOne}
       />
       <RadioButton
-        label="Dog"
-        value={favorite === 'dog'}
-        onChange={handleDogChange}
+        label={props.optionTwo}
+        value={favorite === 'optionTwo'}
+        onChange={handleChangeTwo}
       />
+      <div>
+        <button onClick={(e)=>onSubmit(e,favorite,props.submitAnswer)}>Submit</button>
+      </div>
     </div>
   );
 };
