@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function QuestionBlurbs(props) {
   const { users, questions } = props
@@ -8,7 +8,9 @@ function QuestionBlurbs(props) {
     <div>
       <ul>
         {questions.sort((a,b) => (b.timestamp - a.timestamp)).map( (q) => 
-           (<li key = {q.id}> {users[q.author].name} asks: <br/> {q.optionOne.text} OR {q.optionTwo.text} 
+           (<li key = {q.id}> 
+              <img src={users[q.author].avatarURL} alt={`Avatar of ${users[q.author].name}`} className='avatar'></img>
+              {users[q.author].name} asks: <br/> {q.optionOne.text} OR {q.optionTwo.text} 
               <br/> 
                 <Link to={`/question/${q.id}`}>
                   View Question

@@ -15,6 +15,7 @@ function MenuBar(props) {
     <div>
       <Link to={'/'}> Home </Link>
       <Link to={'/add'}> New Question </Link>
+      <Link to={'/leaderboard'}> Leaderboard </Link>
       <button onClick={(e)=>handleClick(e,dispatch,setAuthedUser)}> Log Out </button>
       <div>
         <h1> Welcome {userName} </h1>
