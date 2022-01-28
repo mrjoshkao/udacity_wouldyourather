@@ -3,11 +3,13 @@ import './App.css';
 import { handleInitialData } from '../actions/shared'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './LoginPage.js'
 import Dashboard from './Dashboard.js'
 import QuestionPage from './QuestionPage.js'
 import NewQuestion from './NewQuestion.js'
+import MenuBar from './MenuBar.js'
+import ScoreBoard from './ScoreBoard.js'
 
 class App extends React.Component {
   state = {
@@ -18,26 +20,32 @@ class App extends React.Component {
     this.props.dispatch(handleInitialData())
   }
   render () {
-    return (
-      <Router className="App">
-        <LoadingBar />
-        {this.props.loading === true 
-          ? ''
-          : <div>
-              <Routes>
-                <Route path='/' element={<div><LoginPage /> <Dashboard /> <Link to={'/new'} > New Question </Link></div>} />
-                <Route path='/question/:id' element={<QuestionPage/>} />
-                <Route path='/new' element={<NewQuestion/>} />
-              </Routes>
-            </div> }
-      </Router>
-    );
+    if(this.props.loggedIn === true) 
+      return (
+        <Router className="App">
+          <LoadingBar />
+          <MenuBar />
+          {this.props.loading === true 
+            ? ''
+            : <div>
+                <Routes>
+                  <Route path='/' element={<div> <Dashboard /></div>} />
+                  <Route path='/question/:id' element={<QuestionPage/>} />
+                  <Route path='/add' element={<NewQuestion/>} />
+                  <Route path='/leaderboard' element={<ScoreBoard/>} />
+                </Routes>
+              </div> }
+        </Router>
+      );
+    else
+     return (<LoginPage />) 
   }
 }
 
-function mapStateToProps ({ questions }) {
+function mapStateToProps ({ loadingBar, authedUser }) {
   return {
-    loading: Object.keys(questions).length === 0
+    loading: loadingBar.default === 1,
+    loggedIn: authedUser !== null,
   }
 }
 

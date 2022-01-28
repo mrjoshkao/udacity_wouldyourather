@@ -16,8 +16,12 @@ function QuestionPage(props) {
   const dispatch = useDispatch()
   const q = useSelector((state) => state.questions)[id]
   const users = useSelector((state) => state.users)
-  const author = users[q.author]
   const authedUser = useSelector((state) => state.authedUser)
+  
+  if(!q)
+    return(<h1> Error: Question does not exist </h1>)
+  
+  const author = users[q.author]
   const authedUserAnswers = authedUser ? users[authedUser].answers : []
   const votesOne = q.optionOne.votes.length
   const votesTwo = q.optionTwo.votes.length

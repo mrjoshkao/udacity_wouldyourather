@@ -1,13 +1,17 @@
+/*
+ *  https://reactrouter.com/docs/en/v6/api#usenavigate
+ */ 
+
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function handleSubmit(e,info,setToHome,dispatch) {
+function handleSubmit(e,info,navigate,dispatch) {
   e.preventDefault();
   console.log(info);
   dispatch(handleAddQuestion(info.optionOne,info.optionTwo))
-  setToHome(true);
+  navigate('/')
 }
 
 function NewQuestion(props) {
@@ -15,16 +19,13 @@ function NewQuestion(props) {
   const dispatch = useDispatch()
   const [textOne, setTextOne] = React.useState('');
   const [textTwo, setTextTwo] = React.useState('');
-  const [toHome, setToHome] = React.useState(false);
   
-  if (toHome === true) {
-    return <Navigate to='/' />
-  }
+  const navigate = useNavigate();
   
   return(
     <div>
       <h1> New Question </h1>
-      <form onSubmit={(e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},setToHome,dispatch)}>
+      <form onSubmit={(e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},navigate,dispatch)}>
         <textarea
           placeholder="What's the first option?"
           value={textOne}
