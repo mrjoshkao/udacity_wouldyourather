@@ -11,6 +11,13 @@ export default function questions (state = {}, action) {
         ...state,
         ...action.questions
       }
+    case ANSWER_SUBMIT :
+      return {
+        
+      }
+    case ADD_QUESTION :
+      return {
+      }
     default :
       return state
   }

@@ -17,6 +17,13 @@ export function receiveQuestions (questions) {
   }
 }
 
+function addQuestion (formattedQuestion) {
+   return {
+     type: ADD_QUESTION, 
+     formattedQuestion
+   }
+}
+
 export function handleAddQuestion(optionOne, optionTwo, setToHome) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
