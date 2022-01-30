@@ -9,7 +9,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import AnswerSelector from './AnswerSelector.js'
-import { handleAnswerSubmit } from '../actions/questions'
+import { handleAnswerSubmit } from '../actions/shared'
 
 function QuestionPage(props) {
   const { id } = useParams()

@@ -4,7 +4,7 @@
 
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { handleAddQuestion } from '../actions/questions'
+import { handleAddQuestion } from '../actions/shared'
 import { useNavigate } from 'react-router-dom'
 
 function handleSubmit(e,info,navigate,dispatch) {

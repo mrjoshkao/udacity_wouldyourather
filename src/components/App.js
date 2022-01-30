@@ -38,7 +38,7 @@ class App extends React.Component {
         </Router>
       );
     else
-     return (<LoginPage />) 
+      return (<div><LoadingBar /><LoginPage /></div>) 
   }
 }
 

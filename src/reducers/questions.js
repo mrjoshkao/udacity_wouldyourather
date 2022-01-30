@@ -2,7 +2,7 @@
  * adapted from github.com/udacity/reactnd-chirper-app
  */
 
-import { RECEIVE_QUESTIONS, ANSWER_SUBMIT, ADD_QUESTION } from '../actions/questions'
+import { RECEIVE_QUESTIONS, QUESTIONS_ANSWER_SUBMIT, QUESTIONS_ADD_QUESTION } from '../actions/questions'
 
 export default function questions (state = {}, action) {
   switch(action.type) {
@@ -11,12 +11,21 @@ export default function questions (state = {}, action) {
         ...state,
         ...action.questions
       }
-    case ANSWER_SUBMIT :
+    case QUESTIONS_ANSWER_SUBMIT :
       return {
-        
+        ...state,
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat([action.authedUser])
+          }
+        }
       }
-    case ADD_QUESTION :
+    case QUESTIONS_ADD_QUESTION :
       return {
+        ...state,
+        [action.formattedQuestion.id]: action.formattedQuestion
       }
     default :
       return state

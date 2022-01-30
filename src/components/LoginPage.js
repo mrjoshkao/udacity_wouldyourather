@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
- 
+
 class LoginPage extends React.Component {
   handleChange = (e) => {
     e.preventDefault()
