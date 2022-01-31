@@ -28,6 +28,36 @@
   color: #61dafb;
 }
 
+/**
+ *  tab styling source: https://github.com/do-community/building-a-tabs-component-react
+ *  source: https://www.w3schools.com/css/css_link.asp
+ *  https://stackoverflow.com/questions/8953485/is-it-possible-to-remove-the-hand-cursor-that-appears-when-hovering-over-a-link
+ */ 
+
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;    
+  color: inherit;
+  cursor: default;
+}
+
+.tab-list-active {
+  background-color: white;
+  border: solid #ccc;
+  border-width: 1px 1px 0 1px;
+  text-decoration: none;    
+  color: inherit;
+  cursor: default;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

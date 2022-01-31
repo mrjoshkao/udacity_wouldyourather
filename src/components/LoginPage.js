@@ -5,9 +5,7 @@ import { setAuthedUser } from '../actions/authedUser'
 class LoginPage extends React.Component {
   handleChange = (e) => {
     e.preventDefault()
-    
     const { dispatch } = this.props
-    
     e.target.value === '' ? console.log('hello') : dispatch(setAuthedUser(e.target.value))
   }
   

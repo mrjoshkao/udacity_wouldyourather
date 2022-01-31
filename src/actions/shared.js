@@ -24,6 +24,8 @@ export function handleAnswerSubmit(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
     
+    dispatch(showLoading())
+    
     return saveQuestionAnswer({
       authedUser,
       qid,
@@ -32,6 +34,8 @@ export function handleAnswerSubmit(qid, answer) {
         dispatch(uAnswerSubmit(qid, authedUser, answer))
       ).then(
         dispatch(qAnswerSubmit(qid, authedUser, answer))
+      ).then(() =>
+        dispatch(hideLoading())
       )
   }
 }

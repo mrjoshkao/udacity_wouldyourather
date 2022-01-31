@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 
@@ -12,13 +12,13 @@ function MenuBar(props) {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.users)[useSelector((state) => state.authedUser)].name;
   return (
-    <div>
-      <Link to={'/'}> Home </Link>
-      <Link to={'/add'}> New Question </Link>
-      <Link to={'/leaderboard'}> Leaderboard </Link>
-      <button onClick={(e)=>handleClick(e,dispatch,setAuthedUser)}> Log Out </button>
-      <div>
-        <h1> Welcome {userName} </h1>
+    <div className="tabs">
+      <div className="tab-list">
+        <NavLink to={'/'} className={({isActive})=>{return(isActive?"tab-list-item tab-list-active":"tab-list-item")}}> Home </NavLink>
+        <NavLink to={'/add'} className={({isActive})=>{return(isActive?"tab-list-item tab-list-active":"tab-list-item")}}> New Question </NavLink>
+        <NavLink to={'/leaderboard'} className={({isActive})=>{return(isActive?"tab-list-item tab-list-active":"tab-list-item")}}> Leaderboard </NavLink>
+        Welcome {userName}
+        <button className="tab-list-item" onClick={(e)=>handleClick(e,dispatch,setAuthedUser)}> Log Out </button>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import QuestionBlurbs from './QuestionBlurbs.js'
+import Tabs from './Tabs.js'
 
 class Dashboard extends React.Component {
   render() {
@@ -14,10 +15,15 @@ class Dashboard extends React.Component {
     
     return (
       <div>
-        <h1> Answered Questions </h1>
-          <QuestionBlurbs users={this.props.users} questions={answeredQuestions}/>
-        <h1> Unanswered Questions </h1>
-          <QuestionBlurbs users={this.props.users} questions={unansweredQuestions}/>
+        <h1> Home Page </h1>
+        <Tabs>
+          <div label="Answered Questions">
+            <QuestionBlurbs users={this.props.users} questions={answeredQuestions}/>
+          </div>
+          <div label="Unanswered Questions">
+            <QuestionBlurbs users={this.props.users} questions={unansweredQuestions}/>
+          </div>
+      </Tabs>
       </div>
     )
   }
