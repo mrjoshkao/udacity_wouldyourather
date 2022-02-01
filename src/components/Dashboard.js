@@ -15,7 +15,6 @@ class Dashboard extends React.Component {
     
     return (
       <div>
-        <h1> Home Page </h1>
         <Tabs>
           <div label="Answered Questions">
             <QuestionBlurbs users={this.props.users} questions={answeredQuestions}/>

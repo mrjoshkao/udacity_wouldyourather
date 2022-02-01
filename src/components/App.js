@@ -22,20 +22,22 @@ class App extends React.Component {
   render () {
     if(this.props.loggedIn === true) 
       return (
-        <Router className="App">
+        <div>
+        <Router>
+          <MenuBar/>
           <LoadingBar />
-          <MenuBar />
           {this.props.loading === true 
             ? ''
-            : <div>
+            : <div className="App">
                 <Routes>
-                  <Route path='/' element={<div> <Dashboard /></div>} />
+                  <Route path='/' element={<Dashboard/>} />
                   <Route path='/question/:id' element={<QuestionPage/>} />
                   <Route path='/add' element={<NewQuestion/>} />
                   <Route path='/leaderboard' element={<ScoreBoard/>} />
                 </Routes>
               </div> }
         </Router>
+        </div>
       );
     else
       return (<div><LoadingBar /><LoginPage /></div>) 

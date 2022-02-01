@@ -11,7 +11,6 @@ class ScoreBoard extends React.Component {
     console.log(sortedBoard);
     return (
       <div>
-        <h1> Leaderboard </h1>
         <ol>
           {sortedBoard.map( (u) => 
              (<li key = {u.uid}> 

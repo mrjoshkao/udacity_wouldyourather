@@ -11,7 +11,9 @@ class LoginPage extends React.Component {
   
   render () {
     return(
-      <div>
+      <div className="Login">
+        <h2>Would You Rather Login</h2>
+        <img src="https://udacity-wyr.000webhostapp.com/question-27106_1280.png" alt="wyr logo" className="App-logo"/>
         <select onChange = {this.handleChange}>
           <option value=''> Select a user </option>
           {this.props.users.map( (u) => (<option key = { u.id } value = { u.id }> {u.name} </option>)) }

@@ -24,7 +24,6 @@ function NewQuestion(props) {
   
   return(
     <div>
-      <h1> New Question </h1>
       <form onSubmit={(e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},navigate,dispatch)}>
         <textarea
           placeholder="What's the first option?"
