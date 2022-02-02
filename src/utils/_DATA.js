@@ -1,8 +1,11 @@
+import snow from '../images/snow.jpg'
+import leaf from '../images/leaf.jpg'
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://udacity-wyr.000webhostapp.com/snow.jpg',
+    avatarURL: snow,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',  // fixed an error in original file!
@@ -24,7 +27,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://udacity-wyr.000webhostapp.com/leaf.jpg',
+    avatarURL: leaf,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',

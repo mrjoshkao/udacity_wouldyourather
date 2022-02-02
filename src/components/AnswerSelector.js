@@ -21,7 +21,7 @@ function AnswerSelector(props) {
   };
 
   return (
-    <div>
+    <div className="Answer-Selector">
       <RadioButton
         label={props.optionOne}
         value={favorite === 'optionOne'}
@@ -42,7 +42,7 @@ function AnswerSelector(props) {
 const RadioButton = ({ label, value, onChange }) => {
   return (
     <label>
-      <input type="radio" checked={value} onChange={onChange} />
+      <input type="radio" checked={value} onChange={onChange} name="radio"/>
       {label}
     </label>
   );

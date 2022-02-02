@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import logo from '../images/wyr.png'
 
 class LoginPage extends React.Component {
   handleChange = (e) => {
@@ -13,11 +14,11 @@ class LoginPage extends React.Component {
     return(
       <div className="Login">
         <h2>Would You Rather Login</h2>
-        <img src="https://udacity-wyr.000webhostapp.com/question-27106_1280.png" alt="wyr logo" className="App-logo"/>
-        <select onChange = {this.handleChange}>
+        <img src={logo} alt="wyr logo" className="App-logo"/>
+        <p><select onChange = {this.handleChange}>
           <option value=''> Select a user </option>
           {this.props.users.map( (u) => (<option key = { u.id } value = { u.id }> {u.name} </option>)) }
-        </select>
+        </select></p>
       </div>
     )
   }

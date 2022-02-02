@@ -4,21 +4,15 @@
 
 .App {
   margin-top: 40px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.App::-webkit-scrollbar {
-  display: none;
 }
 
 .Login {
   margin: auto;
   padding: 50px 0;
   text-align: center;
-  width: 300px;
-  height: 300px;
   color: black;
+  background-color: white;
+  min-height: 100vw;
 }
 
 /*
@@ -52,20 +46,15 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 200px;
   pointer-events: none;
   padding: 0.25em 0 1em 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.avatar {
+  height: 300px;
+  border-radius: 150px;
+  margin: 2px;
 }
 
 .App-link {
@@ -81,6 +70,14 @@
 .tab-list {
   border-bottom: 1px solid #ccc;
   padding-left: 0;
+  margin: 0;
+}
+
+.dashboard-tab {
+  position: fixed;
+  left: 0; 
+  top: 40px;
+  width: 100%;
 }
 
 .tab-list-item {
@@ -103,11 +100,65 @@
   cursor: default;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tab-content {
+  margin-block-start:0;
+  margin-block-end:0;
+  display: flex;
+  margin-top: 40px;
+}
+
+/**
+ *  https://stackoverflow.com/questions/20626685/better-way-to-set-distance-between-flexbox-items
+ */
+
+.Question-Blurb {
+  text-align: center;
+  list-style: none;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #dad7d7;
+  margin: 10px;
+}
+
+.Question-Blurb > div {
+  margin: 5px 
+}
+
+.Question-Page {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Answer-Selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/**
+ *  https://stackoverflow.com/questions/4641752/css-how-to-style-a-selected-radio-buttons-label
+ */
+
+.Answer-Selector input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.Answer-Selector label {
+  margin: 10px; 
+  display: inline-block;
+  background-color: #ddd;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Answer-Selector input[type="radio"]:checked+label {
+  background-color: #bbb;
 }

@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import AnswerSelector from './AnswerSelector.js'
 import { handleAnswerSubmit } from '../actions/shared'
+import capFirstLetter from '../utils/helpers.js'
 
 function QuestionPage(props) {
   const { id } = useParams()
@@ -19,7 +20,7 @@ function QuestionPage(props) {
   const authedUser = useSelector((state) => state.authedUser)
   
   if(!q)
-    return(<h1> Error: Question does not exist </h1>)
+    return(<h2> Error: Question does not exist </h2>)
   
   const author = users[q.author]
   const authedUserAnswers = authedUser ? users[authedUser].answers : []
@@ -30,13 +31,13 @@ function QuestionPage(props) {
   const submitAnswer = (answer) => dispatch(handleAnswerSubmit(id,answer))
   
   return (
-    <div>
-      {author.name} asks: <br/> {q.optionOne.text} OR {q.optionTwo.text}
+    <div className="Question-Blurb Question-Page">
+      <div> {author.name} asks:</div> <div> {capFirstLetter(q.optionOne.text)} </div> OR <div> {capFirstLetter(q.optionTwo.text)} </div>
       {
         authedUserAnswers[q.id] ?
-          <div><h1> You selected: </h1> {q[authedUserAnswers[q.id]].text} <h1>Votes</h1> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div> 
+          <div><h2> You selected: </h2> {capFirstLetter(q[authedUserAnswers[q.id]].text)} <h2>Votes</h2> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div> 
           :
-          <div><h1>Vote: </h1><AnswerSelector optionOne={q.optionOne.text} optionTwo={q.optionTwo.text} submitAnswer={submitAnswer}/></div>
+          <div><h2>Vote: </h2><AnswerSelector optionOne={capFirstLetter(q.optionOne.text)} optionTwo={capFirstLetter(q.optionTwo.text)} submitAnswer={submitAnswer}/></div>
       }
     </div>
   )

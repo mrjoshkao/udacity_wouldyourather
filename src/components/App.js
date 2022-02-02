@@ -22,13 +22,13 @@ class App extends React.Component {
   render () {
     if(this.props.loggedIn === true) 
       return (
-        <div>
+        <div className="App">
         <Router>
           <MenuBar/>
           <LoadingBar />
           {this.props.loading === true 
             ? ''
-            : <div className="App">
+            : <div>
                 <Routes>
                   <Route path='/' element={<Dashboard/>} />
                   <Route path='/question/:id' element={<QuestionPage/>} />

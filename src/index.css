@@ -5,18 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-width: none;
 }
 
-html {
-  scrollbar-width: none;
-}
 
-.avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
