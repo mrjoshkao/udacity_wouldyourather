@@ -38,6 +38,7 @@
   outline-color: #f2f2f2;
   outline-width: 2px;
   padding: 0.25em 0.25em;
+  text-decoration: none;
 }
 
 .navbar-logout:hover {
@@ -46,7 +47,7 @@
 }
 
 .App-logo {
-  height: 200px;
+  height: 300px;
   pointer-events: none;
   padding: 0.25em 0 1em 0;
 }
@@ -153,9 +154,8 @@
   margin: 10px; 
   display: inline-block;
   background-color: #ddd;
-  padding: 4px 11px;
+  padding: 30px 11px;
   font-family: Arial;
-  font-size: 16px;
   cursor: pointer;
 }
 

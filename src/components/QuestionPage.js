@@ -32,12 +32,17 @@ function QuestionPage(props) {
   
   return (
     <div className="Question-Blurb Question-Page">
-      <div> {author.name} asks:</div> <div> {capFirstLetter(q.optionOne.text)} </div> OR <div> {capFirstLetter(q.optionTwo.text)} </div>
+      <img src={users[q.author].avatarURL} alt={`Avatar of ${users[q.author].name}`} className='avatar'></img>
+      <h2>{author.name} asks:</h2>
       {
         authedUserAnswers[q.id] ?
-          <div><h2> You selected: </h2> {capFirstLetter(q[authedUserAnswers[q.id]].text)} <h2>Votes</h2> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}</div> 
+          <div>
+            <div> {capFirstLetter(q.optionOne.text)} </div> OR <div> {capFirstLetter(q.optionTwo.text)} </div>
+            <h2> You selected: </h2> {capFirstLetter(q[authedUserAnswers[q.id]].text)} 
+            <h2>Votes: </h2> Option 1: {votesOne}/{totalVotes} Option 2: {votesTwo}/{totalVotes}
+          </div> 
           :
-          <div><h2>Vote: </h2><AnswerSelector optionOne={capFirstLetter(q.optionOne.text)} optionTwo={capFirstLetter(q.optionTwo.text)} submitAnswer={submitAnswer}/></div>
+          <div><AnswerSelector optionOne={capFirstLetter(q.optionOne.text)} optionTwo={capFirstLetter(q.optionTwo.text)} submitAnswer={submitAnswer}/></div>
       }
     </div>
   )

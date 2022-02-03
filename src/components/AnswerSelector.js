@@ -1,5 +1,6 @@
 /*
  * this pattern comes from https://www.robinwieruch.de/react-radio-button/
+ * with modifications from https://stackoverflow.com/questions/1431726/css-selector-for-a-checked-radio-buttons-label
  */
 
 import React from "react";
@@ -33,7 +34,7 @@ function AnswerSelector(props) {
         onChange={handleChangeTwo}
       />
       <div>
-        <button onClick={(e)=>onSubmit(e,favorite,props.submitAnswer)}>Submit</button>
+        <span className="tab-list-item navbar-logout" onClick={(e)=>onSubmit(e,favorite,props.submitAnswer)}>Submit</span>
       </div>
     </div>
   );
@@ -41,10 +42,12 @@ function AnswerSelector(props) {
 
 const RadioButton = ({ label, value, onChange }) => {
   return (
-    <label>
-      <input type="radio" checked={value} onChange={onChange} name="radio"/>
-      {label}
-    </label>
+    <div>
+      <input type="radio" checked={value} onChange={onChange} id={label}/>
+      <label htmlFor={label}>
+        {label}
+      </label>
+    </div>
   );
 };
 
