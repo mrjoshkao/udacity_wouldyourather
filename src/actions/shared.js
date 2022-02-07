@@ -6,10 +6,16 @@ import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveUsers, addQuestion as uAddQuestion, answerSubmit as uAnswerSubmit } from '../actions/users'
 import { receiveQuestions, addQuestion as qAddQuestion, answerSubmit as qAnswerSubmit } from '../actions/questions'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { cacheImages } from '../utils/helpers.js'
 
 export function handleInitialData () {
   return (dispatch) => {
     dispatch(showLoading())
+    
+    console.log('start');
+    cacheImages();
+    console.log('end');
+    
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(receiveUsers(users))

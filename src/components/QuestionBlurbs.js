@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import capFirstLetter from '../utils/helpers.js'
+import { capFirstLetter } from '../utils/helpers.js'
 
 
 function QuestionBlurbs(props) {

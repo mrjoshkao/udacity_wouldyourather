@@ -1,5 +1,8 @@
 import snow from '../images/snow.jpg'
 import leaf from '../images/leaf.jpg'
+const tyler = 'https://tylermcginnis.com/would-you-rather/tyler.jpg'
+
+export const imgs = [snow, leaf, tyler];
 
 let users = {
   sarahedo: {
@@ -17,7 +20,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://tylermcginnis.com/would-you-rather/tyler.jpg',
+    avatarURL: tyler,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',

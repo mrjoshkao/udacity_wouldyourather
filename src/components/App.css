@@ -115,8 +115,7 @@
 .Question-Blurb {
   text-align: center;
   list-style: none;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -132,6 +131,25 @@
 .Question-Page {
   margin-right: auto;
   margin-left: auto;
+}
+
+.pct-bar-wrap {
+  width: 100%;
+  height: 200px;
+  border: 1px solid black;
+  margin: 5px;
+  display: flex;
+}
+
+.pct-bar {
+  color: white;
+  background-color: #333;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
 }
 
 .Answer-Selector {

@@ -28,6 +28,7 @@ function AnswerSelector(props) {
         value={favorite === 'optionOne'}
         onChange={handleChangeOne}
       />
+      OR
       <RadioButton
         label={props.optionTwo}
         value={favorite === 'optionTwo'}
