@@ -27,12 +27,14 @@ function AnswerSelector(props) {
         label={props.optionOne}
         value={favorite === 'optionOne'}
         onChange={handleChangeOne}
+        id={'optionOne'}
       />
       OR
       <RadioButton
         label={props.optionTwo}
         value={favorite === 'optionTwo'}
         onChange={handleChangeTwo}
+        id={'optionTwo'}
       />
       <div>
         <span className="tab-list-item navbar-logout" onClick={(e)=>onSubmit(e,favorite,props.submitAnswer)}>Submit</span>
@@ -41,11 +43,11 @@ function AnswerSelector(props) {
   );
 };
 
-const RadioButton = ({ label, value, onChange }) => {
+const RadioButton = ({ label, value, onChange, id }) => {
   return (
     <div>
-      <input type="radio" checked={value} onChange={onChange} id={label}/>
-      <label htmlFor={label}>
+      <input type="radio" checked={value} onChange={onChange} id={id}/>
+      <label htmlFor={id}>
         {label}
       </label>
     </div>
