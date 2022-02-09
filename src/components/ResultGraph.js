@@ -3,6 +3,11 @@ import { PieChart } from 'react-minimal-pie-chart'
 import ReactTooltip from 'react-tooltip'
 import { capFirstLetter } from '../utils/helpers.js'
 
+/**
+ *  Adapted from the samples in 'react-minimal-pie-chart' 
+ *  Reference: https://github.com/toomuchdesign/react-minimal-pie-chart/blob/master/stories/FullOption.tsx
+ */
+
 function makeTooltipContent(data) {
   const hasZeroVotes = (data[0].value === 0 || data[1].value === 0) ? 
           (data[0].value===0 ? data[0].tooltip : data[1].tooltip) 

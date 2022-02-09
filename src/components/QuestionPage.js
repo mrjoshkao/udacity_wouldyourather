@@ -22,13 +22,20 @@ function QuestionPage(props) {
   const users = useSelector((state) => state.users)
   const authedUser = useSelector((state) => state.authedUser)
   
-  if(!q)
-    return(
-      <div className="Question-Blurb Question-Page">
-        <img src={logo} alt="wyr logo" className="App-logo"/>
-        <h2> Error: Question does not exist </h2>
-      </div>)
-  
+  return(!q ?
+    (<div className="Question-Blurb Question-Page">
+      <img src={logo} alt="wyr logo" className="App-logo"/>
+      <div>404 asks...</div>
+      <h2><span className="wyr">Would You Rather...</span></h2>
+      <div>Answer nonexistent question?</div>
+      OR
+      <div>Go back to home?</div>
+    </div>)
+    :
+    handleQuestionPage(id, dispatch, q, users, authedUser))
+}
+
+function handleQuestionPage(id, dispatch, q, users, authedUser) {
   const author = users[q.author]
   const authedUserAnswers = authedUser ? users[authedUser].answers : []
   const votesOne = q.optionOne.votes.length
@@ -43,25 +50,9 @@ function QuestionPage(props) {
       <h2><span className="wyr">Would You Rather...</span></h2>
       {
         authedUserAnswers[q.id] ?
-          <div>
-            <OptionText optionText={q.optionOne.text} userChoice={authedUserAnswers[q.id]==="optionOne"}/>
-            OR 
-            <OptionText optionText={q.optionTwo.text} userChoice={authedUserAnswers[q.id]==="optionTwo"}/>
-            <ResultGraph 
-              optionOne={q.optionOne} 
-              optionTwo={q.optionTwo} 
-              userChoice={authedUserAnswers[q.id]} 
-              votesOne={votesOne} votesTwo={votesTwo}
-            />
-          </div> 
+          handleAnsweredQuestion(q,authedUserAnswers,votesOne,votesTwo)
           :
-          <div>
-            <AnswerSelector 
-              optionOne={capFirstLetter(q.optionOne.text)} 
-              optionTwo={capFirstLetter(q.optionTwo.text)} 
-              submitAnswer={submitAnswer}
-            />
-          </div>
+          handleUnansweredQuestion(q,submitAnswer)
       }
     </div>
   )
@@ -72,6 +63,34 @@ const OptionText = ({optionText,userChoice}) => {
     <div className="Option-Text">
       <span style={{marginTop:"-4px"}}>{capFirstLetter(optionText)}?</span>
       {userChoice?(<div className="cm"><Checkmark size="small"/></div>):''}
+    </div>
+  )
+}
+
+const handleAnsweredQuestion = (q,authedUserAnswers,votesOne,votesTwo) => {
+  return (
+    <div>
+      <OptionText optionText={q.optionOne.text} userChoice={authedUserAnswers[q.id]==="optionOne"}/>
+        OR 
+      <OptionText optionText={q.optionTwo.text} userChoice={authedUserAnswers[q.id]==="optionTwo"}/>
+      <ResultGraph 
+       optionOne={q.optionOne} 
+       optionTwo={q.optionTwo} 
+       userChoice={authedUserAnswers[q.id]} 
+       votesOne={votesOne} votesTwo={votesTwo}
+      />
+    </div> 
+  )
+}
+
+const handleUnansweredQuestion = (q,submitAnswer) => {
+  return(
+    <div>
+      <AnswerSelector 
+        optionOne={capFirstLetter(q.optionOne.text)} 
+        optionTwo={capFirstLetter(q.optionTwo.text)} 
+        submitAnswer={submitAnswer}
+      />
     </div>
   )
 }
