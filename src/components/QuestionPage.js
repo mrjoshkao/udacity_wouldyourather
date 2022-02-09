@@ -44,24 +44,15 @@ function QuestionPage(props) {
       {
         authedUserAnswers[q.id] ?
           <div>
-          
-            <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
-              <span style={{marginTop:"-4px"}}>{capFirstLetter(q.optionOne.text)}?</span>
-              <div className="cm"><Checkmark size="small"/></div>
-            </div> 
+            <OptionText optionText={q.optionOne.text} userChoice={authedUserAnswers[q.id]==="optionOne"}/>
             OR 
-            <div> 
-              {capFirstLetter(q.optionTwo.text)}? 
-            </div>
-  
-            <div>
-              <ResultGraph 
-                optionOne={q.optionOne} 
-                optionTwo={q.optionTwo} 
-                userChoice={authedUserAnswers[q.id]} 
-                votesOne={votesOne} votesTwo={votesTwo}
-              />
-            </div>
+            <OptionText optionText={q.optionTwo.text} userChoice={authedUserAnswers[q.id]==="optionTwo"}/>
+            <ResultGraph 
+              optionOne={q.optionOne} 
+              optionTwo={q.optionTwo} 
+              userChoice={authedUserAnswers[q.id]} 
+              votesOne={votesOne} votesTwo={votesTwo}
+            />
           </div> 
           :
           <div>
@@ -75,4 +66,14 @@ function QuestionPage(props) {
     </div>
   )
 }
+
+const OptionText = ({optionText,userChoice}) => {
+  return(
+    <div className="Option-Text">
+      <span style={{marginTop:"-4px"}}>{capFirstLetter(optionText)}?</span>
+      {userChoice?(<div className="cm"><Checkmark size="small"/></div>):''}
+    </div>
+  )
+}
+
 export default QuestionPage;

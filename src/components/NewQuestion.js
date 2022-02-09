@@ -23,23 +23,33 @@ function NewQuestion(props) {
   const navigate = useNavigate();
   
   return(
-    <div>
-      <form onSubmit={(e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},navigate,dispatch)}>
+    <div className="Question-Blurb Question-Page">
+      <h2>Would you rather...</h2>
+      <form 
+        onSubmit={
+          (e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},navigate,dispatch)
+        }
+        >
         <textarea
           placeholder="What's the first option?"
           value={textOne}
           onChange={(e)=>setTextOne(e.target.value)}
+          className="New-Question"
         />
         <textarea
           placeholder="What's the second option?"
           value={textTwo}
           onChange={(e)=>setTextTwo(e.target.value)}
+          className="New-Question"
         />
-        <button
-          type='submit'
-          disabled={textOne ==='' || textTwo === ''}>
-            Submit
-        </button>
+        <div>
+          <button
+            className="tab-list-item navbar-logout"
+            type='submit'
+            disabled={textOne ==='' || textTwo === ''}>
+              Submit
+          </button>
+        </div>
       </form>
     </div>
   )

@@ -11,16 +11,16 @@ class ScoreBoard extends React.Component {
     console.log(sortedBoard);
     return (
       <div>
-        <ol>
+        <ul className="leaderboard">
           {sortedBoard.map( (u) => 
-             (<li key = {u.uid}> 
+             (<li key = {u.uid} className="Question-Blurb"> 
                 <img src={u.imgUrl} alt={`Avatar of ${u.name}`} className='avatar'></img>
-                {u.userName} <br/> Answered: {u.numAnswered} Asked: {u.numCreated} 
-                <br/> 
-                  Total: {u.totalScore}
-                <br/>  
+                <h2>{u.userName}</h2>
+                <span>Answered: {u.numAnswered}</span>
+                <span>Asked: {u.numCreated}</span> 
+                <h3>Total: {u.totalScore}</h3>  
               </li>) )}
-        </ol>
+        </ul>
       </div>
     )
   }

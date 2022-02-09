@@ -9,7 +9,7 @@ function makeTooltipContent(data) {
           : 
           null;
   return (data.filter(d=>d.value!==0).map((d,index)=>
-    (<div>{d.tooltip}: {d.value} {d.value===1?' vote':' votes'} <br/> {hasZeroVotes?'(No votes for: '+ hasZeroVotes + ')':''}</div>)
+    (<div>{d.tooltip}: {d.value} {d.value===1?' vote':' votes'} <br/> {hasZeroVotes?('('+ hasZeroVotes + ' has no votes)'):''}</div>)
   ));
 }
 
@@ -56,7 +56,7 @@ function ResultGraph({optionOne, optionTwo, userChoice, votesOne, votesTwo}){
         multiline={true}
       />
       
-      <div>You Selected: {userChoice==="optionOne"?optionOneText:optionTwoText}</div>
+      <h3>You Selected: {userChoice==="optionOne"?optionOneText:optionTwoText}</h3>
     </div>
   )
 }
