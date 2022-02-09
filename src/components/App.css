@@ -180,3 +180,8 @@
 .Answer-Selector input[type="radio"]:checked+label {
   background-color: #bbb;
 }
+
+.cm {
+  margin-left:0;
+  margin-right:0;
+}
