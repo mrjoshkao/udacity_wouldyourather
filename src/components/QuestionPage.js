@@ -40,7 +40,7 @@ function QuestionPage(props) {
     <div className="Question-Blurb Question-Page">
       <img src={users[q.author].avatarURL} alt={`Avatar of ${author.name}`} className='avatar'></img>
       {author.name} asks:
-      <h2>Would you rather...</h2>
+      <h2><span className="wyr">Would You Rather...</span></h2>
       {
         authedUserAnswers[q.id] ?
           <div>

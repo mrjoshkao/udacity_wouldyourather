@@ -12,9 +12,9 @@ export function handleInitialData () {
   return (dispatch) => {
     dispatch(showLoading())
     
-    console.log('start');
+    console.log('start cache images');
     cacheImages();
-    console.log('end');
+    console.log('end cache images');
     
     return getInitialData()
       .then(({ users, questions }) => {

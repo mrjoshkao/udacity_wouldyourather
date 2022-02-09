@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
   render () {
     return(
       <div className="Login">
-        <h2>Would You Rather Login</h2>
+        <h2><span className="wyr">Would You Rather...</span> Login</h2>
         <img src={logo} alt="wyr logo" className="App-logo"/>
         <p><select onChange = {this.handleChange}>
           <option value=''> Select a user </option>

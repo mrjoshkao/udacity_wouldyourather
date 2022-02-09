@@ -29,6 +29,10 @@
   box-sizing: border-box; /* https://stackoverflow.com/questions/18943240/css-solution-for-removing-border-from-ul-height-without-using-calc */
 }
 
+.wyr {
+  background-color:#f2f2f2
+}
+
 .navbar-item {
   color: #f2f2f2; 
 }

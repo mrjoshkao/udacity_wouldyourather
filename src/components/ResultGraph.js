@@ -38,7 +38,7 @@ function ResultGraph({optionOne, optionTwo, userChoice, votesOne, votesTwo}){
           fontSize: '10px',
         }}
         radius={PieChart.defaultProps.radius - 6}
-        startAngle={90}
+        startAngle={180}
         lineWidth={60}
         animate
         onMouseOver={(_, index) => {

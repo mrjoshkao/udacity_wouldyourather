@@ -24,7 +24,7 @@ function NewQuestion(props) {
   
   return(
     <div className="Question-Blurb Question-Page">
-      <h2>Would you rather...</h2>
+      <h2><span className="wyr">Would You Rather...</span></h2>
       <form 
         onSubmit={
           (e) => handleSubmit(e,{optionOne:textOne, optionTwo:textTwo, authedUser: authedUser},navigate,dispatch)
