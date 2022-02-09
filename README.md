@@ -1,10 +1,72 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This application is written according to this [rubric](https://review.udacity.com/#!/rubrics/1567/view). Some notes:
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+* The `_DATA.js` file represents a fake database and methods that let you access the data. The ` _DATA.js` file has been edited to fix an error in the initial data (for the question "be a superhero" or "be a supervillain" there were inconsistencies in the data between the `questions` object and the `users` object) as well as point `avatarURL` to images contained in `/workspace/src/images`
+* The menubar behaves wonky when the view window is too narrow. It's a result of absolute positioning of flexboxes that I don't have enough knowledge (yet) to fix. One possibility is to redo the interface using a grid or using [react-native](https://reactnavigation.org/)
+* The ordering for the dashboard is the leftmost question is the most recent and the rightmost the oldest instead of top to bottom as specified in the rubric. I used this design decision because it works really well with the large avatars, which communicate the keen interest of the user who is asking the question
+* The app is based on [reactnd-chirper-app](https://github.com/udacity/reactnd-chirper-app/tree/512ddca69dd99d67acf4b9795b1000c2e728e899) with one key difference in the store: whereas reactnd-chirper-app does not make use of the `tweets` property array in the [`users` store](https://github.com/udacity/reactnd-chirper-app/blob/512ddca69dd99d67acf4b9795b1000c2e728e899/src/utils/_DATA.js) and in fact the [reducers](https://github.com/udacity/reactnd-chirper-app/blob/512ddca69dd99d67acf4b9795b1000c2e728e899/src/reducers/users.js) for the user store doesn't even implement updating `tweets`, for udacity_wouldyourather, the `questions` and `answers` properties in the [`users` store](https://github.com/mrjoshkao/udacity_wouldyourather/blob/main/src/utils/_DATA.js) does need to be updated using the reducers **along** with updating the `questions` store itself
+* The app makes use of three third-party components: [react-minimal-pie-chart](https://www.npmjs.com/package/react-minimal-pie-chart), [react-tooltip](https://www.npmjs.com/package/react-tooltip) and [react-checkmark](https://www.npmjs.com/package/react-checkmark) for visuals
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+The app was created using [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+
+## TL;DR
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
+* if runnig on a local machine, navigate to localhost:3000 to view the result
+
+## What You're Getting
+```bash
+├── README.md - This file.
+├── _DATA.js # This is the provided `_DATA.js` for reference
+├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── public
+│   ├── favicon.ico # React Icon, You may change if you wish.
+│   └── index.html # DO NOT MODIFY
+└── src
+    ├── actions
+    │   ├── authedUser.js
+    │   ├── questions.js
+    │   ├── shared.js
+    │   └── users.js
+    ├── components
+    │   ├── AnswerSelector.js
+    │   ├── App.css # Styles for your app. Feel free to customize this as you desire.
+    │   ├── App.js # This is the root of your app. Contains static HTML right now.
+    │   ├── Dashboard.js
+    │   ├── LoginPage.js
+    │   ├── MenuBar.js
+    │   ├── NewQuestion.js
+    │   ├── QuestionBlurbs.js
+    │   ├── QuestionPage.js
+    │   ├── ResultGraph.js
+    │   ├── ScoreBoard.js
+    │   ├── Tab.js # This component was adapted from [do-community](https://github.com/do-community/building-a-tabs-component-react)
+    │   └── Tabs.js # likewise adapted from do-community
+    ├── images
+    │   ├── leaf.jpg
+    │   ├── snow.jpg
+    │   └── wyr.png
+    ├── middleware # These files were adpated from reactnd-chirper-app
+    │   ├── index.js 
+    │   └── logger.js
+    ├── reducers
+    │   ├── authedUser.js
+    │   ├── index.js
+    │   ├── questions.js
+    │   └── users.js
+    ├── utils
+    │   ├── _DATA.js # This is the modified, production version of the given `_DATA.js`
+    │   ├── api.js # Much of the code here was adapted from reactnd-chirper-app
+    │   └── helpers.js # Helpers for capitalizing the first letter of answer choices and for caching avatar images
+    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── index.css # Global styles. You probably won't need to change anything here.
+    ├── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── logo.svg # logo provided by `create-react-app`
+    ├── reportWebVitals.js # provided by `create-react-app`
+    └── setupTests # provided by `create-react-app`
+```
 
 ## Data
 
