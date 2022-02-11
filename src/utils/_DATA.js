@@ -1,6 +1,6 @@
 import snow from '../images/snow.jpg'
 import leaf from '../images/leaf.jpg'
-const tyler = 'https://tylermcginnis.com/would-you-rather/tyler.jpg'
+import tyler from '../images/tyler.jpg'
 
 export const imgs = [snow, leaf, tyler];
 

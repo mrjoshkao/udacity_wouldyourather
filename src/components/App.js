@@ -1,54 +1,45 @@
-import React from 'react'
-import './App.css';
-import { handleInitialData } from '../actions/shared'
-import { connect } from 'react-redux'
+import { React, useEffect } from 'react'
+import './App.css'
+import { useSelector, useDispatch } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { handleInitialData } from '../actions/shared'
 import LoginPage from './LoginPage.js'
 import Dashboard from './Dashboard.js'
 import QuestionPage from './QuestionPage.js'
 import NewQuestion from './NewQuestion.js'
 import MenuBar from './MenuBar.js'
 import ScoreBoard from './ScoreBoard.js'
+import RequireAuth from './RequireAuth.js'
 
-class App extends React.Component {
-  state = {
-    lastQuestionTimeStamp: 0
-  }
+function App(props) {
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state)=>state.loading);
+    
+  useEffect(()=> {
+    dispatch(handleInitialData())
+  },[dispatch])
   
-  componentDidMount() {
-    this.props.dispatch(handleInitialData())
-  }
-  render () {
-    if(this.props.loggedIn === true) 
-      return (
-        <div className="App">
-        <Router>
-          <MenuBar/>
-          <LoadingBar />
-          {this.props.loading === true 
-            ? ''
-            : <div>
-                <Routes>
-                  <Route path='/' element={<Dashboard/>} />
-                  <Route path='/question/:id' element={<QuestionPage/>} />
-                  <Route path='/add' element={<NewQuestion/>} />
-                  <Route path='/leaderboard' element={<ScoreBoard/>} />
-                </Routes>
-              </div> }
-        </Router>
-        </div>
-      );
-    else
-      return (<div><LoadingBar /><LoginPage /></div>) 
-  }
+    return (
+          <div className="App">
+            <Router>
+              <MenuBar />
+              <LoadingBar />
+                { 
+                (isLoading ? '' :
+                 <div>
+                    <Routes>
+                      <Route path='/' element={<RequireAuth><Dashboard/></RequireAuth>} />
+                      <Route path='/question/:id' element={<RequireAuth><QuestionPage/></RequireAuth>} />
+                      <Route path='/add' element={<RequireAuth><NewQuestion/></RequireAuth>} />
+                      <Route path='/leaderboard' element={<ScoreBoard/>} />
+                      <Route path='/login' element={<LoginPage />} />
+                    </Routes>
+                  </div>)
+                }
+            </Router>
+          </div>
+    );
 }
 
-function mapStateToProps ({ loadingBar, authedUser }) {
-  return {
-    loading: loadingBar.default === 1,
-    loggedIn: authedUser !== null,
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

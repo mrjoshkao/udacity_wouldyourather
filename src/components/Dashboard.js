@@ -16,11 +16,11 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Tabs>
-          <div label="Answered Questions">
-            <QuestionBlurbs users={this.props.users} questions={answeredQuestions}/>
-          </div>
           <div label="Unanswered Questions">
             <QuestionBlurbs users={this.props.users} questions={unansweredQuestions}/>
+          </div>
+          <div label="Answered Questions">
+            <QuestionBlurbs users={this.props.users} questions={answeredQuestions}/>
           </div>
       </Tabs>
       </div>

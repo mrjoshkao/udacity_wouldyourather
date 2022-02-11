@@ -5,6 +5,7 @@
 import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveUsers, addQuestion as uAddQuestion, answerSubmit as uAnswerSubmit } from '../actions/users'
 import { receiveQuestions, addQuestion as qAddQuestion, answerSubmit as qAnswerSubmit } from '../actions/questions'
+import { setLoadingTrue, setLoadingFalse } from '../actions/loading'
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { cacheImages } from '../utils/helpers.js'
 
@@ -21,7 +22,7 @@ export function handleInitialData () {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
         dispatch(hideLoading())
-      })
+      }).then(() => dispatch(setLoadingFalse()))
   }
 }
 

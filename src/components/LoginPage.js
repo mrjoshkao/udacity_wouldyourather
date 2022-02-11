@@ -1,33 +1,30 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import { React } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import logo from '../images/wyr.png'
 
-class LoginPage extends React.Component {
-  handleChange = (e) => {
-    e.preventDefault()
-    const { dispatch } = this.props
-    e.target.value === '' ? console.log('hello') : dispatch(setAuthedUser(e.target.value))
-  }
+function LoginPage(props) {  
+  const users = useSelector((state) => Object.values(state.users));
+  const dispatch = useDispatch();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   
-  render () {
-    return(
-      <div className="Login">
-        <h2><span className="wyr">Would You Rather...</span> Login</h2>
-        <img src={logo} alt="wyr logo" className="App-logo"/>
-        <p><select onChange = {this.handleChange}>
-          <option value=''> Select a user </option>
-          {this.props.users.map( (u) => (<option key = { u.id } value = { u.id }> {u.name} </option>)) }
-        </select></p>
-      </div>
-    )
+  const handleChange = (e) => {
+    e.preventDefault()
+    e.target.value === '' ? console.log('hello') : dispatch(setAuthedUser(e.target.value)) && navigate(state?.path || "/")
   }
+     
+  return(
+    <div className="Login">
+      <h2><span className="wyr">Would You Rather...</span> Login</h2>
+      <img src={logo} alt="wyr logo" className="App-logo"/>
+      <p><select onChange = {handleChange}>
+        <option value=''> Select a user </option>
+         {users.map( (u) => (<option key = { u.id } value = { u.id }> {u.name} </option>)) }
+      </select></p>
+    </div>
+  )
 }
 
-function mapStateToProps ({ users }) {
-  return {
-    users : Object.values(users),
-  }
-}
-
-export default connect(mapStateToProps)(LoginPage);
+export default LoginPage;
