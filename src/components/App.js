@@ -23,8 +23,8 @@ function App(props) {
     return (
           <div className="App">
             <Router>
+              <LoadingBar style={{zIndex:"999"}}/>
               <MenuBar />
-              <LoadingBar />
                 { 
                 (isLoading ? '' :
                  <div>

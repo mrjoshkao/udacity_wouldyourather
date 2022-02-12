@@ -31,6 +31,7 @@ export function handleAnswerSubmit(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
     
+    dispatch(setLoadingTrue())
     dispatch(showLoading())
     
     return saveQuestionAnswer({
@@ -41,9 +42,10 @@ export function handleAnswerSubmit(qid, answer) {
         dispatch(uAnswerSubmit(qid, authedUser, answer))
       ).then(
         dispatch(qAnswerSubmit(qid, authedUser, answer))
-      ).then(() =>
+      ).then(() => {
         dispatch(hideLoading())
-      )
+        dispatch(setLoadingFalse())
+      })
   }
 }
 
@@ -52,6 +54,7 @@ export function handleAddQuestion(optionOne, optionTwo, setToHome) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
     
+    dispatch(setLoadingTrue())
     dispatch(showLoading())
     
     return saveQuestion({
@@ -61,8 +64,9 @@ export function handleAddQuestion(optionOne, optionTwo, setToHome) {
     }).then((formattedQuestion)=>{
         dispatch(uAddQuestion(formattedQuestion));
         dispatch(qAddQuestion(formattedQuestion));
-      }).then(() =>
+      }).then(() => {
         dispatch(hideLoading())
-      )
+        dispatch(setLoadingFalse())
+      })
   }
 }
