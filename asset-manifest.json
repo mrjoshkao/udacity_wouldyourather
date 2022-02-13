@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/udacity_wouldyourather/static/css/main.af68c22b.css",
-    "main.js": "/udacity_wouldyourather/static/js/main.e8f35171.js",
+    "main.js": "/udacity_wouldyourather/static/js/main.55c48b31.js",
     "static/js/787.8c7379ed.chunk.js": "/udacity_wouldyourather/static/js/787.8c7379ed.chunk.js",
     "static/media/wyr.png": "/udacity_wouldyourather/static/media/wyr.12ba74a0e3f63786c286.png",
     "static/media/leaf.jpg": "/udacity_wouldyourather/static/media/leaf.c1212e8dbaad849d8346.jpg",
@@ -9,11 +9,11 @@
     "static/media/snow.jpg": "/udacity_wouldyourather/static/media/snow.9ab72f0f50598e9793fc.jpg",
     "index.html": "/udacity_wouldyourather/index.html",
     "main.af68c22b.css.map": "/udacity_wouldyourather/static/css/main.af68c22b.css.map",
-    "main.e8f35171.js.map": "/udacity_wouldyourather/static/js/main.e8f35171.js.map",
+    "main.55c48b31.js.map": "/udacity_wouldyourather/static/js/main.55c48b31.js.map",
     "787.8c7379ed.chunk.js.map": "/udacity_wouldyourather/static/js/787.8c7379ed.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.af68c22b.css",
-    "static/js/main.e8f35171.js"
+    "static/js/main.55c48b31.js"
   ]
 }
