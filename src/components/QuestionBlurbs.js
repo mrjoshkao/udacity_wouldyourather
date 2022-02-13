@@ -1,11 +1,11 @@
 import { React, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { capFirstLetter } from '../utils/helpers.js'
+import logo from '../images/wyr.png'
 
 
 function QuestionBlurbs(props) {
   const { users, questions } = props
-  
   
   /**
    *  source: https://reactjs.org/docs/hooks-effect.html
@@ -15,7 +15,12 @@ function QuestionBlurbs(props) {
   })
   
   return(
-    <div>
+    questions.length === 0 
+    ? (<div className="tab-content"><div className="tab-content Question-Blurb">
+         <img src={logo} alt="wyr logo" className="App-logo"/>
+         <h2>Nothing here!</h2>
+       </div></div>)
+    :(<div>
       <ul className="tab-content">
         {questions.sort((a,b) => (b.timestamp - a.timestamp)).map( (q) => 
            (<li key = {q.id} className="Question-Blurb"> 
@@ -26,7 +31,7 @@ function QuestionBlurbs(props) {
                 </Link>
             </li>) )}
       </ul>
-    </div>
+    </div>)
   )
 }
 
